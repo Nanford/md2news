@@ -131,6 +131,12 @@ body {
   gap: 12px;
 }
 
+.theme-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .view-toggle {
   display: flex;
   align-items: center;
@@ -153,6 +159,66 @@ body {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   transition: all 0.2s ease;
+}
+
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.theme-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: var(--theme-color);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-dot.is-active {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 10px var(--theme-color);
+  transform: scale(1.08);
+}
+
+.theme-dot:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+.theme-reset {
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.theme-reset:not(:disabled):hover {
+  border-color: var(--accent-color);
+  color: var(--text-primary);
+}
+
+.theme-reset:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+.theme-reset:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 .toggle-button.is-active {
@@ -179,6 +245,11 @@ body {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-secondary);
+}
+
+.palette-chip.is-locked {
+  border-color: var(--accent-color);
+  color: var(--text-primary);
 }
 
 .palette-name {

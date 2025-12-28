@@ -1,40 +1,25 @@
 import React from 'react';
 
 const themes = [
-  { id: 'quantum-blue', name: 'Quantum Blue', color: '#00f0ff' },
-  { id: 'neon-city', name: 'Neon City', color: '#ff00ff' },
-  { id: 'synthetic-gold', name: 'Synthetic Gold', color: '#ffd700' },
-  { id: 'clean-future', name: 'Clean Future', color: '#0ea5e9' },
+  { id: 'solar-graphite', name: 'Solar Graphite', color: '#f0b454' },
+  { id: 'circuit-mint', name: 'Circuit Mint', color: '#32e6c6' },
+  { id: 'ion-sky', name: 'Ion Sky', color: '#5aa8ff' },
+  { id: 'oxide-coral', name: 'Oxide Coral', color: '#ff6b6b' },
 ];
 
 export default function ThemeSwitcher({ currentTheme, onThemeChange }) {
   return (
-    <div style={{
-      display: 'flex',
-      gap: '10px',
-      padding: '10px',
-      background: 'var(--bg-secondary)',
-      backdropFilter: 'blur(10px)',
-      borderRadius: '12px',
-      border: '1px solid var(--border-color)',
-      boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-    }}>
+    <div className="theme-switcher" role="group" aria-label="Theme">
       {themes.map((theme) => (
         <button
           key={theme.id}
+          type="button"
           onClick={() => onThemeChange(theme.id)}
           title={theme.name}
-          style={{
-            width: '24px',
-            height: '24px',
-            borderRadius: '50%',
-            backgroundColor: theme.color,
-            border: currentTheme === theme.id ? `2px solid var(--text-primary)` : 'none',
-            cursor: 'pointer',
-            transition: 'transform 0.2s, box-shadow 0.2s',
-            boxShadow: currentTheme === theme.id ? `0 0 10px ${theme.color}` : 'none',
-            transform: currentTheme === theme.id ? 'scale(1.1)' : 'scale(1)'
-          }}
+          aria-label={theme.name}
+          aria-pressed={currentTheme === theme.id}
+          className={`theme-dot ${currentTheme === theme.id ? 'is-active' : ''}`}
+          style={{ backgroundColor: theme.color, '--theme-color': theme.color }}
         />
       ))}
     </div>
